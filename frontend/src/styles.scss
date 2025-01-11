@@ -1,0 +1,47 @@
+/* You can add global styles to this file, and also import other style files */
+
+:root,
+* {
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", serif !important;
+  font-weight: 100;
+  font-style: normal;
+}
+
+$color-contrast: #1b6fce;
+
+$theme-colors: (
+  "primary": #1b6fce,
+  "danger": #e21c4e,
+  "success": #17bd6a,
+  "highlight": #f2f8ff,
+  "shadow": #ebebeb,
+);
+
+@function theme-color($key: "primary") {
+  @return map-get($theme-colors, $key);
+}
+
+.theme-primary {
+  background-color: theme-color("primary");
+}
+
+.dm-serif-text-regular {
+  font-family: "DM Serif Text", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.dm-serif-text-regular-italic {
+  font-family: "DM Serif Text", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* Importing Bootstrap SCSS file. */
+@import "bootstrap/scss/bootstrap";
