@@ -8,7 +8,7 @@ import {
 import { FirestoreFacadeService } from '../../services/firestore-facade.service';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
-import { combineLatest, Subject, take, takeUntil, tap } from 'rxjs';
+import { combineLatest, Subject, take, takeLast, takeUntil, tap } from 'rxjs';
 
 @Component({
   selector: 'app-invite',
@@ -53,16 +53,18 @@ export class InviteComponent implements OnInit, OnDestroy {
                 if (referrer) {
                   console.log('Referral data: ', referral);
                   console.log(user);
+                  console.log(referrer);
 
                   if (referral && Object.keys(referral).length > 0) {
                     if (
                       referral.success !== undefined &&
                       referral.success === false
                     ) {
+                      console.log('Creating referral entry');
                       this.firestoreFacadeService.createReferral(
                         params['code'],
                         user.username,
-                        referrer.email,
+                        referrer.referrer_email,
                         user.email,
                         new Date()
                       );

@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "./dist/referral-app",
+    "public": "./dist/referral-app/browser",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
       {

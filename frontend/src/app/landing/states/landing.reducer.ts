@@ -12,6 +12,11 @@ const initialReferralState: ReferralState = {
     error: null,
     isLoading: false,
   },
+  referrerAcount: {
+    response: null,
+    error: null,
+    isLoading: false,
+  },
 };
 
 export function referralReducer(
@@ -74,6 +79,33 @@ export function referralReducer(
           ...state.referrals,
           response: null,
           error: action.payload,
+          isLoading: false,
+        },
+      };
+    case ReferralActionTypes.GetReferrerAcount:
+      return {
+        ...state,
+        referrerAcount: {
+          ...state.referrerAcount,
+          response: null,
+          isLoading: true,
+        },
+      };
+    case ReferralActionTypes.GetReferrerAcountSuccess:
+      return {
+        ...state,
+        referrerAcount: {
+          ...state.referrerAcount,
+          response: action.payload,
+          isLoading: false,
+        },
+      };
+    case ReferralActionTypes.GetReferrerAcountFail:
+      return {
+        ...state,
+        referrerAcount: {
+          ...state.referrerAcount,
+          response: action.payload,
           isLoading: false,
         },
       };

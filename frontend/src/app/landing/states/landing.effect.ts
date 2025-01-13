@@ -7,6 +7,8 @@ import {
   CreateRefferalFail,
   GetReferralsSuccess,
   GetReferralsFail,
+  GetReferrerAcountSuccess,
+  GetReferrerAcountFail,
 } from './landing.action';
 import { FirestoreService } from '../services/firestore.service';
 import { catchError, map, mergeMap, of } from 'rxjs';
@@ -21,9 +23,10 @@ export class ReferralEffects {
       mergeMap((params) =>
         this.firestore
           .createReferral(
+            params.invite_code,
+            params.name,
             params.referrer_email,
             params.referral_email,
-            params.invite_code,
             params.invite_date
           )
           .pipe(
@@ -41,6 +44,18 @@ export class ReferralEffects {
         this.firestore.getReferrals(params.referrer_email).pipe(
           map((response) => new GetReferralsSuccess(response)),
           catchError((error) => of(new GetReferralsFail(error)))
+        )
+      )
+    )
+  );
+
+  $getReferrer = createEffect(() =>
+    this.action$.pipe(
+      ofType<any>(ReferralActionTypes.GetReferrerAcount),
+      mergeMap((params) =>
+        this.firestore.getReferrerAcount(params.referrer_email).pipe(
+          map((response) => new GetReferrerAcountSuccess(response)),
+          catchError((error) => of(new GetReferrerAcountFail(error)))
         )
       )
     )

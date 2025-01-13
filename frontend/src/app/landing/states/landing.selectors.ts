@@ -39,3 +39,18 @@ export const getReferralsCount = createSelector(
   referralState,
   (state) => state.referrals.response?.length
 );
+
+export const getReferrerAccountResponse = createSelector(
+  referralState,
+  (state) => state.referrerAcount.response
+);
+
+export const getReferrerAccountError = createSelector(
+  referralState,
+  (state) => state.referrerAcount.error
+);
+
+export const getReferrerAcountsIsLoading = createSelector(
+  referralState,
+  (state) => state.referrerAcount.isLoading
+);

@@ -9,8 +9,15 @@ import {
   getReferralsError,
   getReferralsIsLoading,
   getReferralsResponse,
+  getReferrerAccountError,
+  getReferrerAccountResponse,
+  getReferrerAcountsIsLoading,
 } from '../states/landing.selectors';
-import { CreateRefferal, GetReferrals } from '../states/landing.action';
+import {
+  CreateRefferal,
+  GetReferrals,
+  GetReferrerAcount,
+} from '../states/landing.action';
 
 @Injectable({
   providedIn: 'root',
@@ -25,9 +32,39 @@ export class FirestoreFacadeService {
   $getReferralsIsLoading = this.store.pipe(select(getReferralsIsLoading));
   $getReferralCount = this.store.pipe(select(getReferralsCount));
 
+  $getReferrerAcountResponse = this.store.pipe(
+    select(getReferrerAccountResponse)
+  );
+  $getReferrerAcountError = this.store.pipe(select(getReferrerAccountError));
+  $getReferrerAcountIsLoading = this.store.pipe(
+    select(getReferrerAcountsIsLoading)
+  );
+
   constructor(private store: Store<ReferralState>) {}
 
   getReferrals(email: string) {
     this.store.dispatch(new GetReferrals(email));
+  }
+
+  getReferrerAccount(email: string) {
+    this.store.dispatch(new GetReferrerAcount(email));
+  }
+
+  createReferral(
+    invite_code: string,
+    name: string,
+    referrer_email: string,
+    referral_email: string,
+    invite_date: Date
+  ) {
+    this.store.dispatch(
+      new CreateRefferal(
+        invite_code,
+        name,
+        referrer_email,
+        referral_email,
+        invite_date
+      )
+    );
   }
 }

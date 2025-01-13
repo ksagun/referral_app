@@ -3,6 +3,7 @@ import {
   Component,
   OnInit,
   OnDestroy,
+  ChangeDetectorRef,
 } from '@angular/core';
 import { AuthService } from '../../../core/services/auth.service';
 import { AuthFacadeService } from '../../../core/services/auth.facade-service';
@@ -19,6 +20,7 @@ import { environment } from '../../../../environments/environment';
 })
 export class DashboardComponent implements OnInit, OnDestroy {
   protected referralCount$: Observable<number> | undefined;
+  protected code: string | null | undefined;
 
   protected destroy$ = new Subject();
 
@@ -26,7 +28,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
     private authService: AuthService,
     private authFacadeSerivce: AuthFacadeService,
     private firestoreFacadeService: FirestoreFacadeService,
-    private clipboard: Clipboard
+    private clipboard: Clipboard,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -34,8 +37,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe((user) => {
         if (user) {
-          console.log(user);
           this.firestoreFacadeService.getReferrals(user.email);
+          this.firestoreFacadeService.getReferrerAccount(user.email);
         }
       });
 
@@ -47,14 +50,25 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.referralCount$
       .pipe(takeUntil(this.destroy$))
       .subscribe((c) => console.log(c));
+
+    this.firestoreFacadeService.$getReferrerAcountResponse
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((response) => {
+        console.log(response);
+        if (response) {
+          console.log(response);
+          this.code = response?.invite_code;
+          this.cdr.detectChanges();
+        }
+      });
   }
 
   ngOnDestroy(): void {
     this.destroy$.next(null);
   }
 
-  copyToClipboard(code: string) {
-    this.clipboard.copy(`${environment.url}/invite?code=${code}`);
+  copyToClipboard() {
+    this.clipboard.copy(`${environment.url}/invite?code=${this.code}`);
     alert('Invite link copied to clipboard.');
   }
 

@@ -26,7 +26,7 @@ export class FirestoreService {
     referral_email: string,
     invite_date: Date
   ): Observable<any> {
-    console.log(name);
+    console.log(referrer_email);
     return new Observable((observer) => {
       addDoc(collection(this.firestore, 'referral_app'), {
         referrer_type: 'referral',
@@ -91,12 +91,13 @@ export class FirestoreService {
   }
 
   getReferralsByInviteCode(code: string): Observable<any> {
+    console.log(code);
     return new Observable((observer) => {
       const ref = collection(this.firestore, `referral_app`);
       const q = query(
         ref,
         where('invite_code', '==', code),
-        where('referral_type', '==', 'referrer')
+        where('referrer_type', '==', 'referrer')
       );
       const querySnapshot = getDocs(q);
       let item: DocumentData[] = [];

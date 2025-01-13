@@ -9,14 +9,18 @@ export enum ReferralActionTypes {
   GetReferrals = '[Document] Get Refferals',
   GetReferralsSuccess = '[Document] Get Refferals Success',
   GetReferralsFail = '[Document] Get Refferals Fail',
+  GetReferrerAcount = '[Document] Get Referrer Acount',
+  GetReferrerAcountSuccess = '[Document] Get Referrer Acount Success',
+  GetReferrerAcountFail = '[Document] Get Referrer Acount Fail',
 }
 
 export class CreateRefferal implements Action {
   readonly type = ReferralActionTypes.CreateRefferal;
   constructor(
+    public invite_code: string,
+    public name: string,
     public referrer_email: string,
     public referral_email: string,
-    public invite_code: string,
     public invite_date: Date
   ) {}
 }
@@ -46,10 +50,28 @@ export class GetReferralsFail implements Action {
   constructor(public payload: any) {}
 }
 
+export class GetReferrerAcount implements Action {
+  readonly type = ReferralActionTypes.GetReferrerAcount;
+  constructor(public referrer_email: string) {}
+}
+
+export class GetReferrerAcountSuccess implements Action {
+  readonly type = ReferralActionTypes.GetReferrerAcountSuccess;
+  constructor(public payload: any) {}
+}
+
+export class GetReferrerAcountFail implements Action {
+  readonly type = ReferralActionTypes.GetReferrerAcountFail;
+  constructor(public payload: any) {}
+}
+
 export type ReferralActions =
   | CreateRefferal
   | CreateRefferalSuccess
   | CreateRefferalFail
   | GetReferrals
   | GetReferralsSuccess
-  | GetReferralsFail;
+  | GetReferralsFail
+  | GetReferrerAcount
+  | GetReferrerAcountSuccess
+  | GetReferrerAcountFail;

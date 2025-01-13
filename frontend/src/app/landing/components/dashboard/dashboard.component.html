@@ -20,14 +20,14 @@
 
     <!-- <input type="text" value="localhost:4200/invite?code=5bad10cd" /> -->
 
-    <div class="d-flex align-items-start">
+    <div class="d-flex align-items-start" *ngIf="code">
       <div class="form-group">
         <input
           type="text"
           class="form-control referral-code-input"
           id="referral-code"
           aria-describedby="referralCode"
-          value="5bad10cd"
+          [value]="code"
           disabled
         />
         <small id="referralCode" class="form-text text-muted m-3"
@@ -37,7 +37,7 @@
       <button
         type="button"
         class="btn btn-primary p-2 m-3"
-        (click)="copyToClipboard('5bad10cd')"
+        (click)="copyToClipboard()"
       >
         Copy
       </button>

@@ -9,10 +9,12 @@ import { defer, from, Observable } from 'rxjs';
 export class AuthService {
   constructor(private readonly auth: AngularFireAuth) {}
 
-  googleFirebaseLogin() {
+  googleFirebaseLogin(): Observable<any> {
     // this.auth.signInWithRedirect(new GoogleAuthProvider());
-    this.auth.signInWithPopup(new GoogleAuthProvider()).then((response) => {
-      location.reload();
+    return new Observable((observer) => {
+      this.auth.signInWithPopup(new GoogleAuthProvider()).then((response) => {
+        observer.next({ success: true });
+      });
     });
   }
 

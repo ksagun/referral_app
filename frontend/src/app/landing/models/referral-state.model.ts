@@ -9,4 +9,9 @@ export interface ReferralState {
     error: any;
     isLoading: boolean;
   };
+  referrerAcount: {
+    response: any;
+    error: any;
+    isLoading: boolean;
+  };
 }
