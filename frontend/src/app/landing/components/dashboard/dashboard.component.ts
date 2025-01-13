@@ -4,6 +4,7 @@ import { AuthFacadeService } from '../../../core/services/auth.facade-service';
 import { FirestoreFacadeService } from '../../services/firestore-facade.service';
 import { Observable } from 'rxjs';
 import { Clipboard } from '@angular/cdk/clipboard';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-dashboard',
@@ -38,7 +39,7 @@ export class DashboardComponent implements OnInit {
   }
 
   copyToClipboard(code: string) {
-    this.clipboard.copy(`localhost:4200/invite?code=${code}`);
+    this.clipboard.copy(`${environment.url}/invite?code=${code}`);
     alert('Invite link copied to clipboard.');
   }
 
