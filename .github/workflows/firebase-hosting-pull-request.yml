@@ -9,9 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - run: npm ci && npm run build:prod
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          entryPoint: "./frontend"
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
           firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_REFERRAL_APP_D22E9 }}"
           projectId: referral-app-d22e9
