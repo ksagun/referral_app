@@ -14,7 +14,7 @@ jobs:
       - run: npm i && npm run build:prod
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          entryPoint: "./frontend"
+          entryPoint: "./referral_app/frontend"
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
           firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_REFERRAL_APP_D22E9 }}"
           channelId: live
