@@ -10,6 +10,15 @@
         <li><a href="">About</a></li>
       </ul>
     </div>
-    <div class="col"><h3>Dropdown or User Badge</h3></div>
+    <div class="col">
+      <div class="row" *ngIf="$loggedInUser | async as user">
+        <div class="col d-flex justify-content-end">
+          <button type="button" class="btn btn-primary p-2" (click)="signOut()">
+            Sign Out
+          </button>
+          <img [src]="user.photo" alt="" class="avatar" />
+        </div>
+      </div>
+    </div>
   </div>
 </div>

@@ -7,6 +7,13 @@ const routes: Routes = [
     loadChildren: () =>
       import('./landing/landing.module').then((m) => m.LandingModule),
   },
+  {
+    path: '',
+    loadChildren: () =>
+      import('./referral-page/referral-page.module').then(
+        (m) => m.ReferralPageModule
+      ),
+  },
 ];
 
 @NgModule({

@@ -8,21 +8,20 @@ const initialAuthState: AuthState = {
   },
 };
 
-export function actionReducer(
+export function authReducer(
   state: AuthState = initialAuthState,
   action: AuthActions
 ): AuthState {
   switch (action.type) {
-    case AuthActionTypes.GoogleLoginPopUp:
+    case AuthActionTypes.GoogleLogin:
       return {
         ...state,
         google: {
           ...state.google,
           response: null,
-          error: null,
         },
       };
-    case AuthActionTypes.GoogleLoginPopUpSuccess:
+    case AuthActionTypes.GoogleLoginSuccess:
       return {
         ...state,
         google: {
@@ -31,7 +30,7 @@ export function actionReducer(
           error: null,
         },
       };
-    case AuthActionTypes.GoogleLoginPopUpFail:
+    case AuthActionTypes.GoogleLoginFail:
       return {
         ...state,
         google: {
@@ -40,5 +39,7 @@ export function actionReducer(
           error: action.payload,
         },
       };
+    default:
+      return { ...state };
   }
 }

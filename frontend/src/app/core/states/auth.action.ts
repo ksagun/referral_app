@@ -3,27 +3,24 @@ import { Action } from '@ngrx/store';
 export const AUTH_STATE = 'Auth';
 
 export enum AuthActionTypes {
-  GoogleLoginPopUp = '[Auth] Google Login',
-  GoogleLoginPopUpSuccess = '[Auth] Google Login Success',
-  GoogleLoginPopUpFail = '[Auth] Google Login Fail',
+  GoogleLogin = '[Auth] Google Login',
+  GoogleLoginSuccess = '[Auth] Google Login Success',
+  GoogleLoginFail = '[Auth] Google Login Fail',
 }
 
-export class GoogleLoginPopUp implements Action {
-  readonly type = AuthActionTypes.GoogleLoginPopUp;
+export class GoogleLogin implements Action {
+  readonly type = AuthActionTypes.GoogleLogin;
   constructor() {}
 }
 
-export class GoogleLoginPopUpSuccess implements Action {
-  readonly type = AuthActionTypes.GoogleLoginPopUpSuccess;
+export class GoogleLoginSuccess implements Action {
+  readonly type = AuthActionTypes.GoogleLoginSuccess;
   constructor(public payload: any) {}
 }
 
-export class GoogleLoginPopUpFail implements Action {
-  readonly type = AuthActionTypes.GoogleLoginPopUpFail;
+export class GoogleLoginFail implements Action {
+  readonly type = AuthActionTypes.GoogleLoginFail;
   constructor(public payload: any) {}
 }
 
-export type AuthActions =
-  | GoogleLoginPopUp
-  | GoogleLoginPopUpSuccess
-  | GoogleLoginPopUpFail;
+export type AuthActions = GoogleLogin | GoogleLoginSuccess | GoogleLoginFail;

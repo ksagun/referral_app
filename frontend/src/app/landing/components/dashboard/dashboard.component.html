@@ -1,0 +1,47 @@
+<div class="row w-100 p-5">
+  <div class="col d-flex flex-column justify-content-center align-items-center">
+    <img
+      src="../../../../assets/svg/undraw_referral_j2rw.svg"
+      alt=""
+      class="w-25 mb-3"
+    />
+
+    <h3 *ngIf="referralCount$ | async as count" class="mb-2">
+      <ng-container *ngIf="count === 0">
+        Invite your friend and earn points!
+      </ng-container>
+
+      <ng-container *ngIf="count > 0">
+        You got {{ count }} point(s)! <br />
+      </ng-container>
+    </h3>
+
+    <p class="form-text text-muted m-3">invite more to earn more!.</p>
+
+    <!-- <input type="text" value="localhost:4200/invite?code=5bad10cd" /> -->
+
+    <div class="d-flex align-items-start">
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control referral-code-input"
+          id="referral-code"
+          aria-describedby="referralCode"
+          value="5bad10cd"
+          disabled
+        />
+        <small id="referralCode" class="form-text text-muted m-3"
+          >Share this referral code and earn points!.</small
+        >
+      </div>
+      <button
+        type="button"
+        class="btn btn-primary p-2 m-3"
+        (click)="copyToClipboard('5bad10cd')"
+      >
+        Copy
+      </button>
+    </div>
+  </div>
+</div>
+<!-- <button (click)="logout()">Sign out</button> -->

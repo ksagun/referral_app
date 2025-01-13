@@ -4,12 +4,12 @@ import { AUTH_STATE } from './auth.action';
 
 export const authState = createFeatureSelector<AuthState>(AUTH_STATE);
 
-export const googleLoginPopUpResponse = createSelector(
+export const googleLoginCredentials = createSelector(
   authState,
   (state) => state?.google?.response
 );
 
-export const googleLoginPopUpError = createSelector(
+export const googleLoginCredentialsError = createSelector(
   authState,
   (state) => state?.google?.error
 );

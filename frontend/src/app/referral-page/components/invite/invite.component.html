@@ -1,0 +1,27 @@
+<div class="row w-100 p-5">
+  <div>
+    <div
+      *ngIf="inviteStatus.invited"
+      class="col d-flex flex-column justify-content-center align-items-center"
+    >
+      <h3 class="mb-3">{{ inviteStatus.message }}</h3>
+      <img
+        src="../../../../assets/svg/undraw_happy-announcement_23nf.svg"
+        alt=""
+        class="w-25"
+      />
+    </div>
+
+    <div
+      *ngIf="!inviteStatus.invited"
+      class="col d-flex flex-column justify-content-center align-items-center"
+    >
+      <h3 class="mb-3">{{ inviteStatus.message }}</h3>
+      <img
+        src="../../../../assets/svg/undraw_happy-announcement_23nf.svg"
+        alt=""
+        class="w-25"
+      />
+    </div>
+  </div>
+</div>

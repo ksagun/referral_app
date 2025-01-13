@@ -43,5 +43,26 @@ $theme-colors: (
   font-style: italic;
 }
 
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 100%;
+  margin-left: 10px !important;
+  border: 2px solid #ffffff;
+}
+
+input.referral-code-input {
+  padding: 10px !important;
+  margin: 10px !important;
+  font-weight: 700;
+}
+
+.google-button {
+  padding: 10px !important;
+  border-radius: 25px !important;
+  background-color: #ffffff !important;
+  border: 1px solid #ececec;
+}
+
 /* Importing Bootstrap SCSS file. */
 @import "bootstrap/scss/bootstrap";

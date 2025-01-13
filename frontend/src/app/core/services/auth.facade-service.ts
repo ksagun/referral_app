@@ -1,26 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { AuthState } from '../models/auth-state.model';
-import {
-  GoogleLoginPopUp,
-  GoogleLoginPopUpSuccess,
-  GoogleLoginPopUpFail,
-} from '../states/auth.action';
-import {
-  googleLoginPopUpError,
-  googleLoginPopUpResponse,
-} from '../states/auth.selectors';
+import { googleLoginCredentials } from '../states/auth.selectors';
+import { GoogleLogin } from '../states/auth.action';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthFacadeService {
-  $googleLoginPopUpResponse = this.store.pipe(googleLoginPopUpResponse);
-  $googleLoginPopUpError = this.store.pipe(googleLoginPopUpError);
+  $googleLoginResponse = this.store.pipe(select(googleLoginCredentials));
 
   constructor(private store: Store<AuthState>) {}
 
-  triggerGoogleLoginPopup() {
-    this.store.dispatch(new GoogleLoginPopUp());
+  getGoogleLoginResponse() {
+    this.store.dispatch(new GoogleLogin());
   }
 }

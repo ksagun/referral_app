@@ -1,28 +1,27 @@
 import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import {
-  GoogleLoginPopUp,
-  GoogleLoginPopUpSuccess,
-  GoogleLoginPopUpFail,
   AuthActionTypes,
+  GoogleLogin,
+  GoogleLoginFail,
+  GoogleLoginSuccess,
 } from './auth.action';
 import { AuthService } from '../services/auth.service';
-import { catchError, map, mergeMap, of } from 'rxjs';
+import { catchError, EMPTY, exhaustMap, map, mergeMap, of } from 'rxjs';
 
 @Injectable()
 export class AuthEffects {
-  private action$ = inject(Actions);
-  private authService = inject(AuthService);
+  constructor(private action$: Actions, private authService: AuthService) {}
 
-  $googleLoginPopUp = createEffect(() => {
-    return this.action$.pipe(
-      ofType(AuthActionTypes.GoogleLoginPopUp),
+  $getGoogleLoginCreds = createEffect(() =>
+    this.action$.pipe(
+      ofType<any>(AuthActionTypes.GoogleLogin),
       mergeMap(() =>
-        this.authService.loginWithGoogle().pipe(
-          map((response) => new GoogleLoginPopUpSuccess(response)),
-          catchError((err) => of(new GoogleLoginPopUpFail(err)))
+        this.authService.currentUser().pipe(
+          map((response) => new GoogleLoginSuccess(response)),
+          catchError((error) => of(new GoogleLoginFail(error)))
         )
       )
-    );
-  });
+    )
+  );
 }
