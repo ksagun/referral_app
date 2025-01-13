@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: cd ./frontend
-      - run: npm ci && npm run build
+      - run: npm i && npm run build:prod
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           entryPoint: "./frontend"
