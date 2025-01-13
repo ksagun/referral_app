@@ -27,17 +27,6 @@ export class FirestoreFacadeService {
 
   constructor(private store: Store<ReferralState>) {}
 
-  createReferral() {
-    this.store.dispatch(
-      new CreateRefferal(
-        'ksagun117@gmail.com',
-        'marie.jmpq@gmail.com',
-        '87654321',
-        new Date()
-      )
-    );
-  }
-
   getReferrals(email: string) {
     this.store.dispatch(new GetReferrals(email));
   }
