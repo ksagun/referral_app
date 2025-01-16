@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { AuthState } from '../models/auth-state.model';
-import { googleLoginCredentials } from '../states/auth.selectors';
-import { GoogleLogin } from '../states/auth.action';
+import { googleLoginCredentials } from '../store/auth.selectors';
+import { GoogleLogin } from '../store/auth.action';
 
 @Injectable({
   providedIn: 'root',

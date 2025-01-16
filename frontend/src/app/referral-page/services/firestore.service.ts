@@ -51,29 +51,6 @@ export class FirestoreService {
           });
         });
     });
-    // return new Observable((observer) => {
-    //   setDoc(doc(this.firestore, 'referral_app'), {
-    //     referrer_type: 'referral',
-    //     referrer_email: referrer_email,
-    //     refferral_email: referral_email,
-    //     invite_code: invite_code,
-    //     invite_date: invite_date,
-    //   })
-    //     .then((docRef) => {
-    //       console.log('Document written with ID: ', docRef);
-    //       observer.next({
-    //         success: true,
-    //         message: 'Document written with ID: ' + docRef,
-    //       });
-    //     })
-    //     .catch((err) => {
-    //       console.log(err);
-    //       observer.next({
-    //         success: false,
-    //         message: err,
-    //       });
-    //     });
-    // });
   }
 
   getReferralsByEmail(email: string): Observable<any> {

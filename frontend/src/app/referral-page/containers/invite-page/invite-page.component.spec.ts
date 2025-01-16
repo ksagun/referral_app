@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { InviteComponent } from './invite.component';
+import { InviteComponent } from './invite-page.component';
 
 describe('InviteComponent', () => {
   let component: InviteComponent;
@@ -8,10 +8,9 @@ describe('InviteComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [InviteComponent]
-    })
-    .compileComponents();
-    
+      declarations: [InviteComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(InviteComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

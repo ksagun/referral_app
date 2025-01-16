@@ -10,7 +10,6 @@ import { AuthFacadeService } from '../../../core/services/auth.facade-service';
 import { FirestoreFacadeService } from '../../services/firestore-facade.service';
 import { Observable, Subject, takeUntil } from 'rxjs';
 import { Clipboard } from '@angular/cdk/clipboard';
-import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-dashboard',
@@ -67,8 +66,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.destroy$.next(null);
   }
 
-  copyToClipboard() {
-    this.clipboard.copy(`${environment.url}/invite?code=${this.code}`);
+  copyToClipboard(url: string) {
+    this.clipboard.copy(url);
     alert('Invite link copied to clipboard.');
   }
 

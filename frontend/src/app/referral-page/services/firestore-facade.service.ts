@@ -14,13 +14,13 @@ import {
   getReferralsError,
   getReferralsIsLoading,
   getReferralsResponse,
-} from '../states/referral.selectors';
+} from '../store/referral.selectors';
 import {
   CreateRefferal,
   GetLoggedInUserReferralRecord,
   GetReferralByCode,
   GetReferrals,
-} from '../states/referral.action';
+} from '../store/referral.action';
 
 @Injectable({
   providedIn: 'root',

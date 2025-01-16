@@ -12,11 +12,11 @@ import { combineLatest, Subject, take, takeLast, takeUntil, tap } from 'rxjs';
 
 @Component({
   selector: 'app-invite',
-  templateUrl: './invite.component.html',
-  styleUrl: './invite.component.scss',
+  templateUrl: './invite-page.component.html',
+  styleUrl: './invite-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class InviteComponent implements OnInit, OnDestroy {
+export class InvitePageComponent implements OnInit, OnDestroy {
   private destroy$ = new Subject();
   protected message: string | null | undefined;
   protected inviteStatus = {

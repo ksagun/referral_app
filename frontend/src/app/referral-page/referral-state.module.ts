@@ -1,12 +1,12 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EffectsModule } from '@ngrx/effects';
-import { ReferralEffects } from './states/referral.effect';
+import { ReferralEffects } from './store/referral.effect';
 import { StoreModule } from '@ngrx/store';
-import { referralReducer } from './states/referral.reducer';
+import { referralReducer } from './store/referral.reducer';
 import { FirestoreService } from './services/firestore.service';
 import { FirestoreFacadeService } from './services/firestore-facade.service';
-import { REFERRAL_STATE } from './states/referral.action';
+import { REFERRAL_STATE } from './store/referral.action';
 
 @NgModule({
   declarations: [],

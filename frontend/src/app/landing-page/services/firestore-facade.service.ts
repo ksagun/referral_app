@@ -12,12 +12,12 @@ import {
   getReferrerAccountError,
   getReferrerAccountResponse,
   getReferrerAcountsIsLoading,
-} from '../states/landing.selectors';
+} from '../store/landing.selectors';
 import {
   CreateRefferal,
   GetReferrals,
   GetReferrerAcount,
-} from '../states/landing.action';
+} from '../store/landing.action';
 
 @Injectable({
   providedIn: 'root',

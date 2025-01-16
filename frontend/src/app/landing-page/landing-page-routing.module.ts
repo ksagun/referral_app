@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './components/login/login.component';
+import { LoginComponent } from './containers/login/login.component';
 import { AuthenticatedGuard, AuthGuard } from '../core/guards/auth.guard';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { DashboardComponent } from './containers/dashboard/dashboard.component';
 import { AngularFireAuthGuard } from '@angular/fire/compat/auth-guard';
 
 const routes: Routes = [

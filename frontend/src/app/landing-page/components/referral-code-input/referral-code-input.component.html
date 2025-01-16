@@ -1,0 +1,22 @@
+<div class="d-flex align-items-start" *ngIf="inviteCode">
+  <div class="form-group">
+    <input
+      type="text"
+      class="form-control referral-code-input"
+      id="referral-code"
+      aria-describedby="referralCode"
+      [value]="inviteCode"
+      disabled
+    />
+    <small id="referralCode" class="form-text text-muted m-3"
+      >Share this referral code and earn points!.</small
+    >
+  </div>
+  <button
+    type="button"
+    class="btn btn-primary p-2 m-3"
+    (click)="copyInviteLink()"
+  >
+    Copy
+  </button>
+</div>

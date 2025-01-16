@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { InviteComponent } from './components/invite/invite.component';
+import { InvitePageComponent } from './containers/invite-page/invite-page.component';
 
 const routes: Routes = [
   {
     path: 'invite',
-    component: InviteComponent,
+    component: InvitePageComponent,
   },
 ];
 

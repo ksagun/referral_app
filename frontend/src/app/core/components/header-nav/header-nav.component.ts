@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthFacadeService } from '../core/services/auth.facade-service';
+import { AuthFacadeService } from '../../services/auth.facade-service';
 import { Observable } from 'rxjs';
-import { AuthService } from '../core/services/auth.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'header-nav',

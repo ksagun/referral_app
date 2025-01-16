@@ -5,7 +5,7 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
-      import('./landing/landing.module').then((m) => m.LandingModule),
+      import('./landing-page/landing-page.module').then((m) => m.LandingModule),
   },
   {
     path: '',
